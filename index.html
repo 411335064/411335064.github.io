@@ -2,38 +2,228 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>一華電子書店 — 電子書購買平台示範</title>
-  <meta name="description" content="獨立翻譯小說電子書販售平台範例 — 支援試閱、購物車、簡易結帳流程（須串接付款）。">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>個人介紹 — 東華大學 資訊管理學系（大一）</title>
   <style>
-    /* 使用配色：
-       背景 / 主色: #F9F5F0
-       卡片: #F2EAD3
-       亮橘（強調）: #F4991A
-       深綠（次要）: #344F1F
+    /* 配色（使用者提供）
+       primary:  #1B3C53  深色
+       second:   #456882
+       accent:   #D2C1B6
+       bg:       #F9F3EF
     */
-    :root{--bg:#F9F3EF;--card:#D2C1B6;--muted:#1B3C53;--accent:#456882;--accent-2:#1B3C53;--radius:12px;--maxw:1100px}
+    :root{
+      --primary:#1B3C53;
+      --second:#456882;
+      --accent:#D2C1B6;
+      --bg:#F9F3EF;
+      --card-bg: rgba(255,255,255,0.9);
+      --glass: rgba(255,255,255,0.6);
+      --radius: 14px;
+      --max-width:1100px;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans CJK TC", "Helvetica Neue", Arial;
+    }
     *{box-sizing:border-box}
-    body{font-family:'Noto Sans TC', system-ui, -apple-system, 'Segoe UI', Roboto; margin:0; background:linear-gradient(180deg,var(--bg),#fff); color:var(--muted)}
-    a{color:var(--accent-2)}
-    .wrap{max-width:var(--maxw); margin:28px auto; padding:18px}
-    header{display:flex; justify-content:space-between; align-items:center; gap:12px}
-    .brand{display:flex; align-items:center; gap:12px}
-    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2)); display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
-    h1{margin:0;font-size:20px}
-    nav{display:flex; gap:12px; align-items:center}
-    .btn{padding:8px 12px;border-radius:8px;text-decoration:none;background:var(--accent);color:white;font-weight:600}
-    .muted{color:var(--muted)}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--font-sans);
+      background:linear-gradient(180deg,var(--bg), #fff 60%);
+      color:var(--primary);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:32px 16px;
+    }
 
-    .hero{display:flex; gap:20px; align-items:center; margin-top:16px}
-    .hero .info{flex:1}
-    .hero p{margin:6px 0}
+    .container{
+      max-width:var(--max-width);
+      margin:0 auto;
+      background:transparent;
+    }
 
-    .grid{display:grid; grid-template-columns:1fr 320px; gap:18px; margin-top:20px}
-    @media (max-width:980px){.grid{grid-template-columns:1fr} .aside{order:-1}}
+    header.top{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      background:linear-gradient(90deg,var(--primary),var(--second));
+      padding:18px;
+      border-radius:20px;
+      color:white;
+      box-shadow:0 8px 30px rgba(27,60,83,0.18);
+    }
 
-    /* product list */
+    /* logo: 一本書 + 花（簡單 SVG） */
+    .logo{
+      width:72px;height:72px;flex:0 0 72px;border-radius:12px;background:var(--card-bg);display:flex;align-items:center;justify-content:center;padding:8px;
+    }
+    .title{
+      display:flex;flex-direction:column;gap:4px;
+    }
+    .title h1{margin:0;font-size:20px;letter-spacing:0.4px}
+    .title p{margin:0;opacity:0.9;font-size:13px}
+
+    main{
+      display:grid;
+      grid-template-columns:360px 1fr;
+      gap:26px;
+      margin-top:22px;
+    }
+
+    /* 左側卡片：大頭照、基本資料 */
+    .card{
+      background:var(--card-bg);
+      padding:18px;
+      border-radius:var(--radius);
+      box-shadow:0 8px 20px rgba(27,60,83,0.06);
+      backdrop-filter: blur(6px);
+    }
+
+    .photo{
+      width:100%;border-radius:12px;overflow:hidden;height:240px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--second),var(--accent));
+    }
+    .photo img{width:100%;height:100%;object-fit:cover}
+
+    .info{margin-top:12px}
+    .info h2{margin:0 0 6px 0;font-size:18px}
+    .meta{font-size:14px;color:var(--primary);opacity:0.9;margin-bottom:10px}
+    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tag{background:var(--accent);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--primary)}
+
+    /* 右側內容 */
+    .content{
+      display:flex;flex-direction:column;gap:18px;
+    }
+    .card h3{margin:0 0 10px 0}
+    .about p{line-height:1.55;margin:0}
+
+    .skills{display:flex;gap:8px;flex-wrap:wrap}
+    .skill{flex:0 0 auto;background:linear-gradient(90deg, rgba(69,104,130,0.12), rgba(210,193,182,0.12));padding:8px 12px;border-radius:10px;font-weight:600;color:var(--primary)}
+
+    .projects{display:grid;gap:12px}
+    .proj{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.7));border:1px solid rgba(27,60,83,0.06)}
+    .proj h4{margin:0 0 6px 0}
+    .proj p{margin:0;font-size:14px;opacity:0.9}
+
+    .contact-list{display:flex;flex-direction:column;gap:8px}
+    .contact-list a{display:inline-block;text-decoration:none;padding:8px 12px;border-radius:10px;background:var(--second);color:white;font-weight:600}
+
+    footer{margin-top:18px;text-align:center;color:var(--primary);opacity:0.7;font-size:13px}
+
+    /* 小型螢幕 */
+    @media (max-width:940px){
+      main{grid-template-columns:1fr;}
+      .photo{height:220px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="top">
+      <div class="logo" aria-hidden="true">
+        <!-- 簡單 SVG：一本書 + 牡丹風格花朵 -->
+        <svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="logo">
+          <!-- book -->
+          <rect x="6" y="10" width="28" height="36" rx="3" fill="white" opacity="0.96" />
+          <path d="M34 10h10v36H34z" fill="#D2C1B6" opacity="0.95" />
+          <line x1="12" y1="16" x2="30" y2="16" stroke="#1B3C53" stroke-width="0.8" opacity="0.6" />
+          <!-- stylized peony: circles -->
+          <g transform="translate(40,22)">
+            <circle cx="0" cy="0" r="6" fill="#D2C1B6" />
+            <circle cx="-5" cy="-4" r="3.8" fill="#F9F3EF" />
+            <circle cx="5" cy="-3" r="3.6" fill="#F9F3EF" />
+            <circle cx="-3" cy="4" r="3.4" fill="#F9F3EF" />
+            <circle cx="3" cy="4" r="3.2" fill="#F9F3EF" />
+            <circle cx="0" cy="0" r="1.6" fill="#1B3C53" />
+          </g>
+        </svg>
+      </div>
+      <div class="title">
+        <h1>東華大學 • 資訊管理學系</h1>
+        <p>大一生｜個人介紹網頁範例 — 可直接複製 / 修改</p>
+      </div>
+    </header>
+
+    <main>
+      <!-- 左側：大頭照與基本信息 -->
+      <aside class="card">
+        <div class="photo" title="上傳你的照片替換此處">
+          <!-- 使用者請自行替換照片路徑 -->
+          <div style="width:100%;height:100%;background:linear-gradient(135deg, var(--color-primary), var(--color-secondary));border-radius:8px;"></div>
+        </div>
+        <div class="info">
+          <h2>王文儀（Annabeth）</h2>
+          <div class="meta">資訊管理學系 • 大一 | 學號：411335064</div>
+          <div class="tags">
+            <div class="tag">程式設計入門</div>
+            <div class="tag">資料結構</div>
+            <div class="tag">資料分析</div>
+          </div>
+
+          <hr style="margin:14px 0;border:none;border-top:1px dashed rgba(27,60,83,0.06)">
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <div style="flex:1;min-width:120px">
+              <strong>電子郵件</strong>
+              <div style="font-size:14px;opacity:0.9">411335064@gms.ndhu.edu.tw</div>
+            </div>
+            <div style="flex:1;min-width:120px">
+              <strong>所在地</strong>
+              <div style="font-size:14px;opacity:0.9">花蓮, 台灣</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 右側：自我介紹、技能、專題、聯絡 -->
+      <section class="content">
+        <div class="card about">
+          <h3>關於我</h3>
+          <p>嗨，我是東華大學資訊管理學系的大一生。我對資料分析與前端開發有興趣，目前正在學習 Python、HTML/CSS 與資料庫基礎。喜歡用程式把想法做出來，也熱衷於參與校內專題與社團活動。</p>
+        </div>
+
+        <div class="card">
+          <h3>技能</h3>
+          <div class="skills">
+            <div class="skill">HTML / CSS</div>
+            <div class="skill">JavaScript（基礎）</div>
+            <div class="skill">Python（Pandas）</div>
+            <div class="skill">SQL（基礎）</div>
+            <div class="skill">Git / GitHub</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>專題 & 小作品</h3>
+          <div class="projects">
+            <article class="proj">
+              <h4>學生選課滿意度分析（課程專題）</h4>
+              <p>使用問卷與 Python 分析學生對課程的滿意度，視覺化結果並提出建議。</p>
+            </article>
+            <article class="proj">
+              <h4>個人作品集網頁（靜態）</h4>
+              <p>使用 HTML/CSS 建立個人簡介頁，練習排版與響應式設計。</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>聯絡方式</h3>
+          <div class="contact-list">
+            <a href="mailto:411335064@gms.ndhu.edu.tw">寄信給我</a>
+            <a href="https://github.com/411335064" target="_blank" rel="noopener">GitHub：411335064</a>
+            <a href="https://www.linkedin.com/in/annabeth-wang" target="_blank" rel="noopener">LinkedIn：Annabeth Wang</a>
+          </div>
+        </div>
+
+        <footer>
+          © 東華大學 資訊管理學系 — 大一生個人介紹範例
+        </footer>
+      </section>
+    </main>
+  </div>
+
+  <!-- 小提示：可把這個 HTML 存成 .html，並用瀏覽器開啟預覽。替換圖片與個人資訊即可。 -->
+</body>
+</html>
     .controls{display:flex; justify-content:space-between; gap:12px; align-items:center}
     .search{flex:1}
     .search input{width:100%; padding:10px;border-radius:10px;border:1px solid rgba(52,79,31,0.08); background:transparent; color:var(--muted)}
