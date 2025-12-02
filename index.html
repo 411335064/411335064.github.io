@@ -3,186 +3,244 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>個人介紹 — 東華大學 資訊管理學系（大一）</title>
+  <title>個人網頁 — 東華大學 資訊管理學系</title>
   <style>
-    /* 配色（使用者提供）
-       primary:  #1B3C53  深色
-       second:   #456882
-       accent:   #D2C1B6
-       bg:       #F9F3EF
-    */
     :root{
       --primary:#1B3C53;
       --second:#456882;
       --accent:#D2C1B6;
       --bg:#F9F3EF;
       --card-bg: rgba(255,255,255,0.9);
-      --glass: rgba(255,255,255,0.6);
       --radius: 14px;
       --max-width:1100px;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans CJK TC", "Helvetica Neue", Arial;
+      --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans CJK TC",Arial;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
     body{
-      margin:0;
+      margin:0;padding:32px 16px;
       font-family:var(--font-sans);
-      background:linear-gradient(180deg,var(--bg), #fff 60%);
+      background:linear-gradient(180deg,var(--bg),#fff 60%);
       color:var(--primary);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:32px 16px;
     }
-
-    .container{
-      max-width:var(--max-width);
-      margin:0 auto;
-      background:transparent;
-    }
+    .container{max-width:var(--max-width);margin:0 auto;}
 
     header.top{
-      display:flex;
-      gap:20px;
-      align-items:center;
+      display:flex;gap:20px;align-items:center;
       background:linear-gradient(90deg,var(--primary),var(--second));
-      padding:18px;
-      border-radius:20px;
-      color:white;
+      padding:18px;border-radius:20px;color:white;
       box-shadow:0 8px 30px rgba(27,60,83,0.18);
     }
+    .logo img{width:90px;height:90px;object-fit:contain;border-radius:12px;background:white;}
 
-    /* logo: 一本書 + 花（簡單 SVG） */
-    .logo{
-      width:72px;height:72px;flex:0 0 72px;border-radius:12px;background:var(--card-bg);display:flex;align-items:center;justify-content:center;padding:8px;
-    }
-    .title{
-      display:flex;flex-direction:column;gap:4px;
-    }
-    .title h1{margin:0;font-size:20px;letter-spacing:0.4px}
-    .title p{margin:0;opacity:0.9;font-size:13px}
+    main{display:grid;grid-template-columns:360px 1fr;gap:26px;margin-top:22px;}
 
-    main{
-      display:grid;
-      grid-template-columns:360px 1fr;
-      gap:26px;
-      margin-top:22px;
-    }
-
-    /* 左側卡片：大頭照、基本資料 */
     .card{
       background:var(--card-bg);
-      padding:18px;
-      border-radius:var(--radius);
+      padding:18px;border-radius:var(--radius);
       box-shadow:0 8px 20px rgba(27,60,83,0.06);
-      backdrop-filter: blur(6px);
     }
+    .photo{width:100%;height:240px;border-radius:12px;overflow:hidden;background:var(--second);}
+    .photo img{width:100%;height:100%;object-fit:cover;}
 
-    .photo{
-      width:100%;border-radius:12px;overflow:hidden;height:240px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--second),var(--accent));
-    }
-    .photo img{width:100%;height:100%;object-fit:cover}
-
-    .info{margin-top:12px}
-    .info h2{margin:0 0 6px 0;font-size:18px}
-    .meta{font-size:14px;color:var(--primary);opacity:0.9;margin-bottom:10px}
-    .tags{display:flex;gap:8px;flex-wrap:wrap}
+    .tags,.skills{display:flex;gap:8px;flex-wrap:wrap}
     .tag{background:var(--accent);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--primary)}
+    .skill{background:rgba(69,104,130,0.12);padding:8px 12px;border-radius:10px;font-weight:600;color:var(--primary)}
 
-    /* 右側內容 */
-    .content{
-      display:flex;flex-direction:column;gap:18px;
+    .content{display:flex;flex-direction:column;gap:18px;}
+
+    /* 學習歷程顏色區塊 */
+    .semester-block{
+      padding:12px;border-radius:10px;
+      background:rgba(210,193,182,0.25);
+      margin-bottom:12px;
     }
-    .card h3{margin:0 0 10px 0}
-    .about p{line-height:1.55;margin:0}
+    .subtitle{font-weight:700;margin-top:8px;margin-bottom:4px;}
 
-    .skills{display:flex;gap:8px;flex-wrap:wrap}
-    .skill{flex:0 0 auto;background:linear-gradient(90deg, rgba(69,104,130,0.12), rgba(210,193,182,0.12));padding:8px 12px;border-radius:10px;font-weight:600;color:var(--primary)}
-
-    .projects{display:grid;gap:12px}
-    .proj{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.7));border:1px solid rgba(27,60,83,0.06)}
-    .proj h4{margin:0 0 6px 0}
-    .proj p{margin:0;font-size:14px;opacity:0.9}
-
-    .contact-list{display:flex;flex-direction:column;gap:8px}
-    .contact-list a{display:inline-block;text-decoration:none;padding:8px 12px;border-radius:10px;background:var(--second);color:white;font-weight:600}
-
-    footer{margin-top:18px;text-align:center;color:var(--primary);opacity:0.7;font-size:13px}
-
-    /* 小型螢幕 */
-    @media (max-width:940px){
-      main{grid-template-columns:1fr;}
-      .photo{height:220px}
+    /* 連結區塊樣式修正 */
+    .semester-block ul {
+      list-style-type: none; /* 移除列表符號 */
+      padding-left: 0;
+      margin: 0;
     }
+    .semester-block li a {
+      text-decoration: none;
+      color: var(--second); /* 使用 CSS 變數定義連結顏色 */
+      display: block;
+      padding: 4px 0;
+    }
+
+    .contact-list a{
+      text-decoration:none;padding:8px 12px;border-radius:10px;
+      background:var(--second);color:white;font-weight:600;
+      display:inline-block;
+      margin-right: 8px; /* 增加間隔 */
+    }
+
+    footer{
+      font-size: 13px;
+      text-align: center;
+      opacity: 0.7;
+      margin-top: 20px;
+      padding: 10px 0;
+    }
+
+    @media(max-width:940px){main{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <div class="container">
+
     <header class="top">
-      <div class="logo" aria-hidden="true">
-        <!-- 簡單 SVG：一本書 + 牡丹風格花朵 -->
-        <svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="logo">
-          <!-- book -->
-          <rect x="6" y="10" width="28" height="36" rx="3" fill="white" opacity="0.96" />
-          <path d="M34 10h10v36H34z" fill="#D2C1B6" opacity="0.95" />
-          <line x1="12" y1="16" x2="30" y2="16" stroke="#1B3C53" stroke-width="0.8" opacity="0.6" />
-          <!-- stylized peony: circles -->
-          <g transform="translate(40,22)">
-            <circle cx="0" cy="0" r="6" fill="#D2C1B6" />
-            <circle cx="-5" cy="-4" r="3.8" fill="#F9F3EF" />
-            <circle cx="5" cy="-3" r="3.6" fill="#F9F3EF" />
-            <circle cx="-3" cy="4" r="3.4" fill="#F9F3EF" />
-            <circle cx="3" cy="4" r="3.2" fill="#F9F3EF" />
-            <circle cx="0" cy="0" r="1.6" fill="#1B3C53" />
-          </g>
-        </svg>
+      <div class="logo">
+        <img src="https://www.ndhu.edu.tw/var/file/0/1000/img/8/LOGO_NDHU.Pure_233.png" alt="NDHU Logo" />
       </div>
       <div class="title">
         <h1>東華大學 • 資訊管理學系</h1>
-        <p>｜個人介紹網頁範例 — 可直接複製 / 修改</p>
+        <p>王文儀｜個人網頁</p>
       </div>
     </header>
 
     <main>
-      <!-- 左側：大頭照與基本信息 -->
+
       <aside class="card">
-        <div class="photo" title="上傳你的照片替換此處">
-          <!-- 使用者請自行替換照片路徑 -->
-          <div style="width:100%;height:100%;background:linear-gradient(135deg, var(--color-primary), var(--color-secondary));border-radius:8px;"></div>
+        <div class="photo" style="background:linear-gradient(135deg, var(--second), var(--accent));"></div>
+        <h2>王文儀（Annabeth）</h2>
+        <div class="meta">資訊管理學系｜學號：411335064</div>
+        <div class="tags">
+          <div class="tag">程式設計入門</div>
+          <div class="tag">文書處理</div>
+          <div class="tag">平面設計</div>
         </div>
-        <div class="info">
-          <h2>王文儀（Annabeth）</h2>
-          <div class="meta">資訊管理學系 • 大一 | 學號：411335064</div>
-          <div class="tags">
-            <div class="tag">程式設計入門</div>
-            <div class="tag">資料結構</div>
-            <div class="tag">資料分析</div>
-          </div>
-
-          <hr style="margin:14px 0;border:none;border-top:1px dashed rgba(27,60,83,0.06)">
-
-          <div style="display:flex;gap:10px;flex-wrap:wrap">
-            <div style="flex:1;min-width:120px">
-              <strong>電子郵件</strong>
-              <div style="font-size:14px;opacity:0.9">411335064@gms.ndhu.edu.tw</div>
-            </div>
-            <div style="flex:1;min-width:120px">
-              
-            </div>
-          </div>
-        </div>
+        <hr>
+        <strong>電子郵件</strong>
+        <div style="font-size:14px;opacity:0.9">411335064@gms.ndhu.edu.tw</div>
       </aside>
 
-      <!-- 右側：自我介紹、技能、專題、聯絡 -->
       <section class="content">
+
         <div class="card about">
           <h3>關於我</h3>
-          <p>嗨，我是東華大學資訊管理學系的。我對資料分析與前端開發有興趣，目前正在學習 Python、HTML/CSS 與資料庫基礎。喜歡用程式把想法做出來，也熱衷於參與校內專題與社團活動。</p>
+          <p>一位資管系的學生，正在探索資訊技術與商業管理如何結合，希望能透過持續學習，為未來的專案實作打下堅實基礎。</p>
         </div>
 
         <div class="card">
-  <h3>興趣</h3>
-</div>練習排版與響應式設計。</p>
-            </article>
+          <h3>學習歷程</h3>
+
+          <div class="semester-block">
+            <div class="tag">大一上</div>
+            <div class="subtitle">課程</div>
+            <ul>
+              <li>初階程式設計</li>
+              <li>計算機概論</li>
+              <li>商用微積分</li>
+              <li>會計學原理</li>
+              <li>經濟學原理-個體篇</li>
+              <li>中文能力與涵養</li>
+              <li>英語溝通一級</li>
+              <li>英文閱讀與寫作一級</li>
+              <li>體育（一）</li>
+            </ul>
+            <div class="subtitle">講座</div>
+            <ul>
+              <li>國立東華大學教育大數據計畫—微學程招生說明會</li>
+              <li>【職涯講座】從自我探索到履歷面試：用 AI 打造你的專屬職涯攻略</li>
+              <li>【ERP演講】從大學到職場：我的 SAP ERP 工程師之路</li>
+              <li>「AI數位學習黃金技能全攻略」(線上演講)</li>
+              <li>【職涯講座】給還不確定方向的你：職涯定位 X 自我成長</li>
+            </ul>
+            <div class="subtitle">其他</div>
+            <ul>
+              <li>商管冒險王-開啟你獨自升等的學習旅程！</li>
+            </ul>
+          </div>
+
+          <div class="semester-block">
+            <div class="tag">大一下</div>
+            <div class="subtitle">課程</div>
+            <div class="subtitle">講座</div>
+            <div class="subtitle">其他</div>
+          </div>
+
+          <div class="semester-block">
+            <div class="tag">大二上</div>
+            <div class="subtitle">課程</div>
+            <div class="subtitle">講座</div>
+            <div class="subtitle">其他</div>
+          </div>
+
+          <div class="semester-block">
+            <div class="tag">大二下</div>
+            <div class="subtitle">課程</div>
+            <div class="subtitle">講座</div>
+            <div class="subtitle">其他</div>
+          </div>
+
+          <div class="semester-block">
+            <div class="tag">大三上</div>
+            <div class="subtitle">課程</div>
+            <div class="subtitle">講座</div>
+            <div class="subtitle">其他</div>
+          </div>
+
+          <div class="semester-block">
+            <div class="tag">大三下</div>
+            <div class="subtitle">課程</div>
+            <div class="subtitle">講座</div>
+            <div class="subtitle">其他</div>
+          </div>
+
+          <div class="semester-block">
+            <div class="tag">大四上</div>
+            <div class="subtitle">課程</div>
+            <div class="subtitle">講座</div>
+            <div class="subtitle">其他</div>
+          </div>
+
+          <div class="semester-block">
+            <div class="tag">大四下</div>
+            <div class="subtitle">課程</div>
+            <div class="subtitle">講座</div>
+            <div class="subtitle">其他</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>連結</h3>
+          <div class="semester-block">
+            <div class="tag">學校</div>
+            <ul>
+              <li><a href="https://www.ndhu.edu.tw/" target="_blank">東華大學校網</a></li>
+              <li><a href="https://elearn4.ndhu.edu.tw/moodle/" target="_blank">東華e學苑NEW</a></li>
+              <li><a href="https://sys.ndhu.edu.tw/AA/CLASS/subjselect/Default.aspx" target="_blank">網路選課系統</a></li>
+              <li><a href="https://sys.ndhu.edu.tw/SA/XSL_ApplyRWD/Login.aspx?ReturnUrl=%2fSA%2fXSL_ApplyRWD%2fMyReservation.aspx" target="_blank">跨域自主學習活動暨報名系統</a></li>
+              <li><a href="https://web.ndhu.edu.tw/GA/TSVMS/VPASS/Login.aspx" target="_blank">校園車輛管理系統</a></li>
+            </ul>
+          </div>
+
+          <div class="semester-block">
+            <div class="tag">工具</div>
+            <ul>
+              <li><a href="https://login.microsoftonline.com/edba3211-8174-4411-b089-357c588fa127/oauth2/authorize?client_id=00000003-0000-0ff1-ce00-000000000000" target="_blank">OneDrive</a></li>
+              <li><a href="https://www.canva.com/zh_tw/" target="_blank">Canva</a></li>
+              <li><a href="https://tewkr.com/login" target="_blank">Tewkr</a></li>
+              <li><a href="https://www.onlinegdb.com/" target="_blank">GDB online</a></li>
+              <li><a href="https://www.flaticon.com/" target="_blank">向量圖示和貼紙</a></li>
+            </ul>
+          </div>
+
+          <div class="semester-block">
+            <div class="tag">其他</div>
+            <ul>
+              <li><a href="https://academy.talentcirculationalliance.org/" target="_blank">TCA學院</a></li>
+            </ul>
+          </div>
+
+          <div class="semester-block">
+            <div class="tag">休閒愛好</div>
+            <ul>
+              <li><a href="https://tw.linovelib.com/novel/3613/vol_189098.html" target="_blank">輕小說</a></li>
+              <li><a href="https://m.webtoons.com/zh-hant/" target="_blank">Webtoon</a></li>
+            </ul>
           </div>
         </div>
 
@@ -196,12 +254,11 @@
         </div>
 
         <footer>
-          © 東華大學 資訊管理學系 — 個人介紹範例
+          © 東華大學 資訊管理學系 — 個人網頁
         </footer>
       </section>
     </main>
   </div>
 
-  <!-- 小提示：可把這個 HTML 存成 .html，並用瀏覽器開啟預覽。替換圖片與個人資訊即可。 -->
-</body>
+  </body>
 </html>
